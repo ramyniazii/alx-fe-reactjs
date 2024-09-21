@@ -1,4 +1,6 @@
-import { Router, Routes, Route } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { useState } from 'react';
 import Home from './components/Home';
 import About from './components/About';
