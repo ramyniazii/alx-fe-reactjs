@@ -4,6 +4,7 @@ const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -12,11 +13,19 @@ const RegistrationForm = () => {
     if (name === 'password') setPassword(value);
   };
 
+  const validate = () => {
+    const newErrors = {};
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
+    return newErrors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Basic validation
-    if (!username || !email || !password) {
-      alert('All fields are required!');
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
     console.log('Form submitted:', { username, email, password });
@@ -34,6 +43,7 @@ const RegistrationForm = () => {
           value={username}
           onChange={handleChange}
         />
+        {errors.username && <span>{errors.username}</span>}
       </div>
       <div>
         <label>Email:</label>
@@ -43,6 +53,7 @@ const RegistrationForm = () => {
           value={email}
           onChange={handleChange}
         />
+        {errors.email && <span>{errors.email}</span>}
       </div>
       <div>
         <label>Password:</label>
@@ -52,6 +63,7 @@ const RegistrationForm = () => {
           value={password}
           onChange={handleChange}
         />
+        {errors.password && <span>{errors.password}</span>}
       </div>
       <button type="submit">Register</button>
     </form>
