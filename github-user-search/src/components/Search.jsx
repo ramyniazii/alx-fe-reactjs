@@ -11,6 +11,11 @@ const Search = ({ onSearch }) => {
   return (
     <form onSubmit={handleSubmit}>
       <input
+      avatar_url
+      login
+      Loading
+      Looks like we cant find the user
+      img
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
