@@ -1,21 +1,41 @@
 import React, { useState } from 'react';
-import SearchInput from './components/SearchInput';
-import UserProfile from './components/UserProfile';
-import { fetchGitHubUser } from './services/github';
+import Search from './components/Search';
+import { fetchUserData } from './services/githubService';
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSearch = async (username) => {
-    const userData = await fetchGitHubUser(username);
-    setUser(userData);
+    setLoading(true);
+    setError(null);
+    try {
+      const userData = await fetchUserData(username);
+      setUser(userData);
+    } catch (err) {
+      setError('Looks like we can\'t find the user');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div>
       <h1>GitHub User Search</h1>
-      <SearchInput onSearch={handleSearch} />
-      <UserProfile user={user} />
+      <Search onSearch={handleSearch} />
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {user && (
+        <div>
+          <img src={user.avatar_url} alt={user.name} />
+          <h2>{user.name}</h2>
+          <p>{user.bio}</p>
+          <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+            View Profile
+          </a>
+        </div>
+      )}
     </div>
   );
 };
