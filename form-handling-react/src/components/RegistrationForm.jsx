@@ -1,30 +1,27 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    if (name === 'username') setUsername(value);
+    if (name === 'email') setEmail(value);
+    if (name === 'password') setPassword(value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Basic validation
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!username || !email || !password) {
       alert('All fields are required!');
       return;
     }
-    console.log('Form submitted:', formData);
+    console.log('Form submitted:', { username, email, password });
     // Simulate API call
-    // fetch('https://mockapi.io/endpoint', { method: 'POST', body: JSON.stringify(formData) })
+    // fetch('https://mockapi.io/endpoint', { method: 'POST', body: JSON.stringify({ username, email, password }) })
   };
 
   return (
@@ -34,7 +31,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username}
+          value={username}
           onChange={handleChange}
         />
       </div>
@@ -43,7 +40,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email}
+          value={email}
           onChange={handleChange}
         />
       </div>
@@ -52,7 +49,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password}
+          value={password}
           onChange={handleChange}
         />
       </div>
