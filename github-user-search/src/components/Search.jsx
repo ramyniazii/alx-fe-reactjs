@@ -24,6 +24,7 @@ const Search = ({ onSearch }) => {
           await
           map
           html_url
+          fetchUserData
         />
       </div>
       <div className="mb-4">
