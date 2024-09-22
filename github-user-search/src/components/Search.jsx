@@ -16,6 +16,7 @@ const Search = ({ onSearch }) => {
       Loading
       Looks like we cant find the user
       img
+      fetchUserData
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
