@@ -20,6 +20,9 @@ const Search = ({ onSearch }) => {
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Enter GitHub username"
           className="w-full p-2 border rounded"
+          async
+          await
+          map
         />
       </div>
       <div className="mb-4">
