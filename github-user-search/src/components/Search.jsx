@@ -30,7 +30,7 @@ const Search = ({ onSearch }) => {
         <input
           type="text"
           value={location}
-          onChange={(e) => setLocation(e.target.value)}
+          onChange={(e) => setLocation(e.target.value &&)}
           placeholder="Enter location"
           className="w-full p-2 border rounded"
         />
