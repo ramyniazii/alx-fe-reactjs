@@ -23,6 +23,7 @@ const Search = ({ onSearch }) => {
           async
           await
           map
+          html_url
         />
       </div>
       <div className="mb-4">
