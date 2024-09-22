@@ -9,7 +9,7 @@ function UserProfile() {
         className="rounded-full w-24 h-24 sm:w-36 sm:h-36 mx-auto"
       />
       <h1 className="md:p-8 text-lg sm:text-xl sm:p-4 text-blue-800 my-2 sm:my-4">John Doe</h1>
-      <p className="text-sm sm:text-base text-gray-600">
+      <p className="text-sm sm:text-base md:text-xl text-gray-600">
         Developer at Example Co. Loves to write code and explore new technologies.
       </p>
     </div>
