@@ -11,11 +11,11 @@ test('renders initial todos', () => {
 });
 
 test('adds a new todo', () => {
-  render(<TodoList />);
-  fireEvent.change(screen.getByRole('textbox'), { target: { value: 'New Todo' } });
-  fireEvent.click(screen.getByText('Add Todo'));
-  expect(screen.getByText('New Todo')).toBeInTheDocument();
-});
+    render(<TodoList />);
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'New Todo' } });
+    fireEvent.click(screen.getByText('Add Todo'));
+    expect(screen.getByText('New Todo')).toBeInTheDocument();
+  });
 
 test('toggles a todo', () => {
   render(<TodoList />);
